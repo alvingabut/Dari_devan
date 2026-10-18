@@ -27,7 +27,7 @@ body{
     radial-gradient(ellipse at 50% 110%,rgba(79,141,253,.35),transparent 60%),
     linear-gradient(180deg,var(--deep),var(--night) 70%,#14408f);
 }
-
+ 
 /* ===== Hiasan bunga lily ===== */
 .plant{position:fixed;bottom:-10px;width:min(34vw,260px);pointer-events:none;z-index:1;
   transform-origin:50% 100%;animation:sway 7s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(143,192,255,.45))}
@@ -42,22 +42,22 @@ body{
 .bloom.tr{top:3vh;right:2vw;transform:rotate(22deg);animation-delay:-4s}
 @keyframes sway{0%,100%{rotate:-2deg}50%{rotate:2.5deg}}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 12px}}
-
+ 
 .sparkles{position:fixed;inset:0;pointer-events:none;z-index:0}
 .sparkles i{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--ice);
   box-shadow:0 0 8px 2px rgba(188,217,255,.7);opacity:0;animation:twinkle 4s infinite}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:.9;transform:scale(1)}}
-
+ 
 /* ===== Layar ===== */
 .screen{position:fixed;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:24px;transition:opacity .9s ease,visibility .9s}
 .screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
-
+ 
 .script{font-family:var(--script);font-weight:400;line-height:1.1;
   text-shadow:0 0 24px rgba(143,192,255,.8)}
 h1.script{font-size:clamp(2.6rem,9vw,5rem)}
 .lead{margin:14px 0 26px;font-size:clamp(1rem,2.6vw,1.2rem);color:var(--ice);max-width:32ch;line-height:1.6}
-
+ 
 .form{display:flex;flex-direction:column;gap:14px;align-items:center;width:min(340px,86vw)}
 input{
   width:100%;padding:15px 22px;border-radius:999px;border:1.5px solid rgba(188,217,255,.55);
@@ -72,7 +72,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,99,216,.7)}
 .btn:focus-visible,input:focus-visible,.heart-btn:focus-visible,.mute:focus-visible{outline:3px solid #fff;outline-offset:3px}
-
+ 
 /* ===== Tombol hati ===== */
 .heart-btn{background:none;border:0;cursor:pointer;width:150px;height:150px;position:relative;
   animation:beat 1.4s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(143,192,255,.9))}
@@ -81,7 +81,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
 .hint{margin-top:22px;color:var(--ice);font-size:1.05rem}
 .hint.gone{opacity:0;transition:opacity .3s}
-
+ 
 /* ===== Ledakan hati ===== */
 .burst{position:fixed;left:0;top:0;width:0;height:0;z-index:5;pointer-events:none}
 .burst span{position:absolute;left:0;top:0;line-height:1;animation:explode var(--t) cubic-bezier(.2,.8,.3,1) forwards}
@@ -94,7 +94,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   background:radial-gradient(circle at var(--x) var(--y),rgba(255,255,255,.85),transparent 45%)}
 .flash.go{animation:flash .9s ease-out}
 @keyframes flash{0%{opacity:1}100%{opacity:0}}
-
+ 
 /* ===== Ucapan ===== */
 .card{padding:34px 28px;border-radius:28px;max-width:560px;width:92vw;
   background:rgba(255,255,255,.1);border:1px solid rgba(188,217,255,.45);backdrop-filter:blur(10px);
@@ -106,16 +106,16 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   text-shadow:0 0 28px rgba(143,192,255,.95);word-break:break-word}
 .card p{margin-top:16px;line-height:1.8;color:var(--ice);font-size:clamp(.98rem,2.4vw,1.1rem)}
 .card .sig{font-family:var(--script);font-size:1.9rem;color:#fff;margin-top:14px}
-
+ 
 .float-heart{position:fixed;bottom:-30px;z-index:3;pointer-events:none;animation:rise var(--d) linear forwards;opacity:0}
 @keyframes rise{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:.85}100%{opacity:0;transform:translateY(-110vh) translateX(var(--x)) scale(1.1)}}
-
+ 
 .mute{position:fixed;top:16px;right:16px;z-index:10;width:46px;height:46px;border-radius:50%;cursor:pointer;
   border:1px solid rgba(188,217,255,.6);background:rgba(255,255,255,.14);color:#fff;font-size:1.2rem;
   backdrop-filter:blur(6px);display:none}
 .mute.on{display:block}
-
-
+ 
+ 
 /* ===== Hamburan lily & kembang api ===== */
 .lily-pop{position:absolute;left:0;top:0;animation:scatter var(--t) cubic-bezier(.15,.7,.3,1) forwards;
   filter:drop-shadow(0 0 10px rgba(143,192,255,.85))}
@@ -131,7 +131,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 @keyframes fall{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:.95}
   100%{transform:translate(var(--x),115vh) rotate(var(--r));opacity:.9}}
 #fx{position:fixed;inset:0;z-index:4;pointer-events:none}
-
+ 
 /* ===== Catatan dari Alvin ===== */
 #s3{justify-content:flex-start;overflow-y:auto}
 #s3 .card{margin-top:auto}
@@ -154,14 +154,14 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 .note .pip.a{right:14px;top:-14px}
 .note .pip.b{left:-10px;bottom:30px;animation-delay:-1.2s;font-size:1.1rem}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-6px) rotate(8deg)}}
-
+ 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
 <body>
-
+ 
 <!-- Definisi SVG: bunga lily biru + hati -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -179,7 +179,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       <stop offset="0" stop-color="#bcd9ff"/>
       <stop offset="1" stop-color="#2f63d8"/>
     </linearGradient>
-
+ 
     <symbol id="lily" viewBox="-100 -100 200 200">
       <g fill="url(#petalBack)" stroke="#dff0ff" stroke-width=".8" stroke-opacity=".7">
         <path transform="rotate(60)"  d="M0 0C-24 -28 -26 -72 0 -96C26 -72 24 -28 0 0Z"/>
@@ -204,22 +204,22 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       </g>
       <circle r="5" fill="#eaf4ff"/>
     </symbol>
-
+ 
     <symbol id="lilyPlant" viewBox="0 0 200 440">
       <path d="M100 190C100 290 78 360 92 440" stroke="#2b7fa8" stroke-width="7" fill="none" stroke-linecap="round"/>
       <path d="M92 360C40 330 22 280 30 250C72 262 92 305 92 360Z" fill="#3b95bf" opacity=".9"/>
       <path d="M94 330C148 308 170 262 164 236C122 244 98 282 94 330Z" fill="#2b7fa8" opacity=".9"/>
       <use href="#lily" x="0" y="0" width="200" height="200"/>
     </symbol>
-
+ 
     <symbol id="heart" viewBox="0 0 32 29">
       <path d="M16 28C-9 12 4 -4 16 6C28 -4 41 12 16 28Z" fill="currentColor"/>
     </symbol>
   </defs>
 </svg>
-
+ 
 <div class="sparkles" id="sparkles" aria-hidden="true"></div>
-
+ 
 <!-- Hiasan lily -->
 <svg class="bloom tl" viewBox="0 0 200 200" aria-hidden="true"><use href="#lily" width="200" height="200"/></svg>
 <svg class="bloom tr" viewBox="0 0 200 200" aria-hidden="true"><use href="#lily" width="200" height="200"/></svg>
@@ -227,7 +227,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 <svg class="plant right" viewBox="0 0 200 440" aria-hidden="true"><use href="#lilyPlant" width="200" height="440"/></svg>
 <svg class="plant left small"  viewBox="0 0 200 440" aria-hidden="true"><use href="#lilyPlant" width="200" height="440"/></svg>
 <svg class="plant right small" viewBox="0 0 200 440" aria-hidden="true"><use href="#lilyPlant" width="200" height="440"/></svg>
-
+ 
 <!-- Layar 1: masukkan nama -->
 <main class="screen" id="s1">
   <h1 class="script">Untuk Seseorang yang Istimewa</h1>
@@ -238,7 +238,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     <button class="btn" type="button" id="goBtn">Lanjut</button>
   </div>
 </main>
-
+ 
 <!-- Layar 2: tekan hati -->
 <section class="screen hidden" id="s2">
   <h1 class="script" id="hello">Halo</h1>
@@ -247,7 +247,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     <svg viewBox="0 0 32 29" aria-hidden="true"><path d="M16 28C-9 12 4 -4 16 6C28 -4 41 12 16 28Z" fill="url(#heartGrad)" stroke="#e8f2ff" stroke-width=".6"/></svg>
   </button>
 </section>
-
+ 
 <!-- Layar 3: ucapan -->
 <section class="screen hidden" id="s3">
   <div class="card" id="card">
@@ -264,18 +264,18 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     <div class="who">- Alvin 💙</div>
   </div>
 </section>
-
+ 
 <button class="mute" id="mute" aria-label="Matikan suara">🔊</button>
 <div class="flash" id="flash"></div>
 <div class="burst" id="burst"></div>
-
-
+ 
+ 
 <script>
 (function(){
   var $ = function(id){return document.getElementById(id)};
   var s1=$('s1'), s2=$('s2'), s3=$('s3');
   var userName='';
-
+ 
   // Kilau bintang latar
   var sp=$('sparkles');
   for(var i=0;i<28;i++){
@@ -286,10 +286,10 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     d.style.animationDuration=(3+Math.random()*3)+'s';
     sp.appendChild(d);
   }
-
+ 
   function show(el){el.classList.remove('hidden')}
   function hide(el){el.classList.add('hidden')}
-
+ 
   // 1) Nama
   function submitName(){
     var v=$('nameInput').value.trim();
@@ -302,7 +302,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   }
   $('goBtn').addEventListener('click',submitName);
   $('nameInput').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); submitName(); } });
-
+ 
   // 2) Hati meledak
   var COLORS=['#bcd9ff','#8fc0ff','#5a9bff','#2f63d8','#ffffff','#cfe5ff','#ffb8d1'];
   function explode(x,y){
@@ -328,7 +328,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     f.style.setProperty('--x',x+'px'); f.style.setProperty('--y',y+'px');
     f.classList.remove('go'); void f.offsetWidth; f.classList.add('go');
   }
-
+ 
   var muteBtn=$('mute'), muted=false;
   muteBtn.addEventListener('click',function(){
     muted=!muted;
@@ -336,7 +336,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     muteBtn.textContent=muted?'🔇':'🔊';
     muteBtn.setAttribute('aria-label',muted?'Nyalakan suara':'Matikan suara');
   });
-
+ 
   function floatHearts(){
     setInterval(function(){
       var h=document.createElement('div');
@@ -352,7 +352,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       setTimeout(function(){h.remove()},11500);
     },650);
   }
-
+ 
   // ===== Suara romantis (dibuat langsung di browser) =====
   var ac=null, master=null;
   function audioCtx(){
@@ -402,7 +402,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     for(var i=0;i<5;i++) noise(t+0.08+Math.random()*0.35,0.06,5000,'highpass',0.12);
     tone(1200+Math.random()*900,t+0.1,0.6,0.05,'sine');
   }
-
+ 
   // ===== Kembang api =====
   var cv=document.createElement('canvas'); cv.id='fx'; document.body.appendChild(cv);
   var cx=cv.getContext('2d'), rockets=[], parts=[], fxOn=false, fxTimer=null;
@@ -453,7 +453,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       if(n===18){ clearInterval(fxTimer); fxTimer=setInterval(launch,2200); }
     },420);
   }
-
+ 
   // ===== Hamburan bunga lily =====
   var LILY='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#lily" width="200" height="200"/></svg>';
   function scatterLilies(x,y){
@@ -483,7 +483,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       setTimeout(function(){d.remove()},12500);
     },1100);
   }
-
+ 
   var pressed=false;
   $('heartBtn').addEventListener('click',function(){
     if(pressed) return; pressed=true;
@@ -509,3 +509,4 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 </script>
 </body>
 </html>
+ 
