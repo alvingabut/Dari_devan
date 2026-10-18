@@ -254,6 +254,18 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
 .poem .para.tight2{margin-top:2px}
 .poem .end.wish{font-family:var(--cursive);font-weight:400;font-style:italic;color:#fff;margin-top:30px;
   font-size:clamp(1.5rem,6.2vw,2.1rem);line-height:1.7;letter-spacing:0;text-shadow:0 2px 0 #8a3fd1,0 0 22px rgba(255,170,230,.9)}
+#s5{justify-content:flex-start;overflow-y:auto;padding-bottom:215px}
+.treat{text-align:center}
+.treat::before{content:'🎁'!important}
+.treat h2{margin-bottom:14px;font-size:clamp(1.8rem,7vw,2.8rem)}
+.treat .para{font-size:clamp(1.05rem,3.4vw,1.25rem);margin:0}
+.treat h2,.treat .para{opacity:0;transform:translateY(14px)}
+.treat.go h2{animation:wordIn 1s cubic-bezier(.22,.8,.3,1) .35s forwards}
+.treat.go .para{animation:wordIn 1s cubic-bezier(.22,.8,.3,1) 1.3s forwards}
+.treat .para.p2{margin-top:20px}
+.treat.go .para.p2{animation:wordIn 1s cubic-bezier(.22,.8,.3,1) 2.4s forwards}
+body.both .nav.prev{left:calc(50% - 68px)}
+body.both .nav.next{left:calc(50% + 12px)}
 /* kata muncul satu per satu, lembut seperti ditulis pelan-pelan */
 .poem .w{display:inline-block;opacity:0;transform:translateY(10px)}
 .poem.go .w{animation:wordIn 1s cubic-bezier(.22,.8,.3,1) var(--d) forwards}
@@ -380,14 +392,14 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
   <div class="card" id="card">
     <h2 class="script">Happy Birthday! 🎉💗</h2>
     <div class="name" id="finalName"></div>
-    <p>Semoga hari ini full tawa, semua doa baikmu di-ACC semesta, dan tiap langkahmu dijaga bahagia kayak lily yang lagi mekar. Makasih udah hadir dan bikin sekitarmu jadi lebih hangat. Hari ini kamu main character-nya 💗</p>
+    <p>Semoga hari ini full senyum, semua doa baikmu dikabulkan semesta, dan tiap langkahmu dijaga bahagia kayak lily yang lagi mekar. Makasih udah hadir dan bikin sekitarmu jadi lebih hangat. Hari ini kamu main character-nya 💗</p>
     <div class="sig">Dari hati yang paling dalam 🫶💗</div>
   </div>
   <div class="note" id="note">
     <span class="tape"></span>
     <span class="pip a">♥</span><span class="pip b">♥</span>
     <div class="from">Pesan kecil dari someone ✨</div>
-    <p>Semoga hari-hari kamu selalu bahagia dan semoga pas lulus bisa 💗</p>
+    <p>Semoga hari-hari kamu selalu bahagia dan semoga kamu sehat selalu 😊💗</p>
     <div class="who">- Someone 💗</div>
   </div>
 </section>
@@ -395,7 +407,7 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
 <!-- Layar 4: doa -->
 <section class="screen hidden out-r" id="s4">
   <div class="poem" id="poem">
-    <p class="para">Hari ini, saya langitkan semua doa terbaik saya untuk kamu. 💗</p>
+    <p class="para">Hari ini, aku langitkan semua doa terbaik aku untuk kamu. 💗</p>
     <p class="para">Semoga hal hal yang membuat kamu runtuh turut menjadi alasan kamu untuk tumbuh.</p>
     <p class="para">Smoga dunia senantiasa menjaga kamu dimana pun kamu berada.</p>
     <p class="para">Semoga hari hari kamu selalu di iringi cinta yg tidak pernah ada batas nya, Dan semoga senyum kedua orang tua kamu yang kamu selalu usahakan itu kini sudah terlaksana 💗</p>
@@ -406,6 +418,15 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
     <p class="para tight2">tetapi ketidakhadiran mu terasa sekali.</p>
     <p class="para">Dan mungkin itulah alasan mengapa aku selalu memilihmu menjadi orang favoritku. ✨🤍</p>
     <div class="end wish">Semoga bahagia selamanya 💗</div>
+  </div>
+</section>
+
+<!-- Layar 5: traktir -->
+<section class="screen hidden out-r" id="s5">
+  <div class="poem treat" id="treat">
+    <h2 class="script">Hari ini kamu mau apa? 🍰</h2>
+    <p class="para">Biar aku yang traktir kamu, karena hari ini hari bahagia kamu 💗</p>
+    <p class="para p2">Kamu harus mau, kalo engga mau ya harus mau, kamu mau di anterin ke rumah apa mau sekalian kita jalan?</p>
   </div>
 </section>
 
@@ -742,26 +763,29 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
     oa.onfinish=function(){ hide(outEl,outCls); oa.cancel(); navLock=false; };
   }
 
-  function goPoem(){
-    if(slide!==3||navLock) return; slide=4;
-    $('next').classList.remove('on');
-    s4.scrollTop=0; $('prev').classList.add('on');
-    buildPoem();
-    slideSwap(s3,s4,1,'out-l');
-    var p=$('poem'); p.classList.remove('go'); void p.offsetWidth; p.classList.add('go');
-    follow();
+  var els={3:s3,4:s4,5:$('s5')};
+  function updateNav(){
+    var showPrev=slide>3, showNext=slide>=3&&slide<5;
+    $('prev').classList.toggle('on',showPrev);
+    $('next').classList.toggle('on',showNext);
+    document.body.classList.toggle('both',showPrev&&showNext);
   }
-  function goBack(){
-    if(slide!==4||navLock) return; slide=3; stopF=true;
-    $('prev').classList.remove('on');
-    slideSwap(s4,s3,-1,'out-r');
-    $('next').classList.add('on');
+  function restart(el){ el.classList.remove('go'); void el.offsetWidth; el.classList.add('go'); }
+  function goTo(n){
+    if(slide<3||navLock||n===slide||n<3||n>5) return;
+    var dir=n>slide?1:-1, from=els[slide], to=els[n];
+    slide=n; stopF=true;
+    if(n===4){ s4.scrollTop=0; buildPoem(); }
+    slideSwap(from,to,dir,dir>0?'out-l':'out-r');
+    if(n===4){ restart($('poem')); follow(); }
+    if(n===5){ restart($('treat')); }
+    updateNav();
   }
-  $('next').addEventListener('click',goPoem);
-  $('prev').addEventListener('click',goBack);
+  $('next').addEventListener('click',function(){ goTo(slide+1); });
+  $('prev').addEventListener('click',function(){ goTo(slide-1); });
   document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight') goPoem();
-    else if(e.key==='ArrowLeft') goBack();
+    if(e.key==='ArrowRight') goTo(slide+1);
+    else if(e.key==='ArrowLeft') goTo(slide-1);
   });
 
   // Hati ditekan: hati meledak, lalu langsung pindah ke slide ucapan (tanpa animasi layar terbelah)
@@ -783,7 +807,7 @@ body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{ani
       setTimeout(function(){$('card').classList.add('show')},250);
       setTimeout(function(){$('note').classList.add('show')},1200);
       setTimeout(function(){document.querySelectorAll('.bear').forEach(function(b){b.classList.add('on')})},1800);
-      setTimeout(function(){ if(slide===3) $('next').classList.add('on'); },2400);
+      setTimeout(function(){ if(slide===3) updateNav(); },2400);
       setTimeout(function(){ document.body.classList.remove('busy'); floatHearts(); rainLilies(); },1500);
     },280);
   });
