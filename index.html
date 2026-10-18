@@ -6,76 +6,86 @@
 <title>Selamat Ulang Tahun, NIA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@400;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+ID:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --deep:#06173d;
-  --night:#0d2a63;
-  --sky:#4f8dfd;
-  --ice:#bcd9ff;
-  --pearl:#f2f7ff;
-  --glow:#8fc0ff;
-  --script:'Great Vibes','Brush Script MT',cursive;
-  --body:'Quicksand','Segoe UI',system-ui,sans-serif;
+  --deep:#2b0f5c;
+  --night:#5a2a9a;
+  --sky:#b78bff;
+  --ice:#ffd6f3;
+  --pearl:#fff7fc;
+  --glow:#ffb3e6;
+  --script:'Bagel Fat One','Trebuchet MS',system-ui,sans-serif;
+  --body:'Nunito','Segoe UI',system-ui,sans-serif;
+  --cursive:'Playwrite ID','Dancing Script','Brush Script MT',cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
   font-family:var(--body);color:var(--pearl);overflow:hidden;
   background:
-    radial-gradient(ellipse at 50% 0%,rgba(143,192,255,.35),transparent 55%),
-    radial-gradient(ellipse at 50% 110%,rgba(79,141,253,.35),transparent 60%),
-    linear-gradient(180deg,var(--deep),var(--night) 70%,#14408f);
+    radial-gradient(ellipse at 50% 0%,rgba(255,170,230,.35),transparent 55%),
+    radial-gradient(ellipse at 50% 110%,rgba(255,181,154,.5),transparent 60%),
+    linear-gradient(180deg,var(--deep),var(--night) 70%,#d6509a);
 }
 
 /* ===== Hiasan bunga lily ===== */
 .plant{position:fixed;bottom:-10px;width:min(34vw,260px);pointer-events:none;z-index:1;
-  transform-origin:50% 100%;animation:sway 7s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(143,192,255,.45))}
+  transform-origin:50% 100%;animation:sway 7s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(255,170,230,.45))}
 .plant.left{left:-2vw}
 .plant.right{right:-2vw;transform:scaleX(-1);animation-delay:-3s}
 .plant.small{width:min(22vw,170px);opacity:.85}
 .plant.left.small{left:10vw}
 .plant.right.small{right:10vw}
 .bloom{position:fixed;width:min(22vw,150px);pointer-events:none;z-index:1;
-  filter:drop-shadow(0 0 14px rgba(143,192,255,.6));animation:float 8s ease-in-out infinite}
+  filter:drop-shadow(0 0 14px rgba(255,170,230,.6));animation:float 8s ease-in-out infinite}
 .bloom.tl{top:2vh;left:2vw;transform:rotate(-18deg)}
 .bloom.tr{top:3vh;right:2vw;transform:rotate(22deg);animation-delay:-4s}
 @keyframes sway{0%,100%{rotate:-2deg}50%{rotate:2.5deg}}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 12px}}
 
 .sparkles{position:fixed;inset:0;pointer-events:none;z-index:0}
-.sparkles i{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--ice);
-  box-shadow:0 0 8px 2px rgba(188,217,255,.7);opacity:0;animation:twinkle 4s infinite}
+.sparkles i{position:absolute;width:14px;height:14px;background:#fff;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);
+  opacity:0;animation:twinkle 4s infinite}
+.sparkles i:nth-child(3n){background:#ffd6f3;width:10px;height:10px}
+.sparkles i:nth-child(4n){background:#e2cbff;width:18px;height:18px}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:.9;transform:scale(1)}}
 
 /* ===== Layar ===== */
 .screen{position:fixed;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:24px;transition:opacity .9s ease,visibility .9s}
+  text-align:center;padding:24px;transition:opacity .7s ease,visibility .7s,transform .7s ease}
 .screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+/* geser penuh antar slide: slide lama keluar ke kiri, slide baru masuk dari kanan (dan sebaliknya) */
+.screen.out-l,.screen.out-r{opacity:1;transition:transform .8s cubic-bezier(.65,0,.25,1),visibility 0s linear .8s}
+.screen.out-l{transform:translateX(-100vw)}
+.screen.out-r{transform:translateX(100vw)}
 
 .script{font-family:var(--script);font-weight:400;line-height:1.1;
-  text-shadow:0 0 24px rgba(143,192,255,.8)}
-h1.script{font-size:clamp(2.6rem,9vw,5rem)}
+  text-shadow:0 3px 0 #8a3fd1,0 0 22px rgba(255,170,230,.8)}
+h1.script{font-size:clamp(2rem,7.4vw,3.6rem)}
 .lead{margin:14px 0 26px;font-size:clamp(1rem,2.6vw,1.2rem);color:var(--ice);max-width:32ch;line-height:1.6}
 
 .form{display:flex;flex-direction:column;gap:14px;align-items:center;width:min(340px,86vw)}
 input{
-  width:100%;padding:15px 22px;border-radius:999px;border:1.5px solid rgba(188,217,255,.55);
+  width:100%;padding:15px 22px;border-radius:999px;border:1.5px solid rgba(255,214,243,.55);
   background:rgba(255,255,255,.1);color:var(--pearl);font:600 1.05rem var(--body);text-align:center;outline:none;
-  backdrop-filter:blur(6px);transition:border-color .3s,box-shadow .3s}
-input::placeholder{color:rgba(188,217,255,.7);font-weight:400}
-input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
+  transition:border-color .3s,box-shadow .3s}
+input::placeholder{color:rgba(255,214,243,.7);font-weight:400}
+input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,170,230,.35)}
 .err{min-height:1.2em;font-size:.9rem;color:#ffd0dc}
 .btn{
   padding:14px 38px;border:0;border-radius:999px;cursor:pointer;font:600 1.05rem var(--body);color:#fff;
-  background:linear-gradient(135deg,#5a9bff,#2f63d8);box-shadow:0 8px 24px rgba(47,99,216,.55);
+  background:linear-gradient(135deg,#ff7ec7,#8a3fd1);box-shadow:0 8px 24px rgba(138,63,209,.55);
   transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,99,216,.7)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(138,63,209,.7)}
 .btn:focus-visible,input:focus-visible,.heart-btn:focus-visible,.mute:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 /* ===== Tombol hati ===== */
 .heart-btn{background:none;border:0;cursor:pointer;width:150px;height:150px;position:relative;
-  animation:beat 1.4s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(143,192,255,.9))}
+  animation:beat 1.4s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(255,170,230,.9))}
 .heart-btn svg{width:100%;height:100%}
 .heart-btn.pop{animation:none;transform:scale(0);transition:transform .25s ease-in}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
@@ -84,7 +94,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 
 /* ===== Ledakan hati ===== */
 .burst{position:fixed;left:0;top:0;width:0;height:0;z-index:5;pointer-events:none}
-.burst span{position:absolute;left:0;top:0;line-height:1;animation:explode var(--t) cubic-bezier(.2,.8,.3,1) forwards}
+.burst span{position:absolute;left:0;top:0;line-height:1;will-change:transform,opacity;animation:explode var(--t) cubic-bezier(.2,.8,.3,1) forwards}
 @keyframes explode{
   0%{transform:translate(-50%,-50%) scale(.2);opacity:1}
   55%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1) rotate(var(--r));opacity:1}
@@ -97,28 +107,29 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 
 /* ===== Ucapan ===== */
 .card{padding:34px 28px;border-radius:28px;max-width:560px;width:92vw;
-  background:rgba(255,255,255,.1);border:1px solid rgba(188,217,255,.45);backdrop-filter:blur(10px);
-  box-shadow:0 20px 60px rgba(3,12,40,.5),inset 0 0 40px rgba(143,192,255,.12);
-  transform:scale(.85);opacity:0;transition:transform .9s cubic-bezier(.2,1.2,.3,1),opacity .9s}
+  background:rgba(70,24,120,.62);border:1px solid rgba(255,214,243,.45);
+  box-shadow:0 20px 60px rgba(30,5,60,.5),inset 0 0 40px rgba(255,170,230,.12);
+  transform:scale(.3);opacity:0;transition:transform 1.1s cubic-bezier(.2,1.1,.3,1),opacity .6s}
 .card.show{transform:none;opacity:1}
-.card h2.script{font-size:clamp(2.2rem,8vw,3.6rem);margin-bottom:6px}
-.card .name{font-family:var(--script);font-size:clamp(3rem,11vw,5.4rem);color:#fff;line-height:1.1;
-  text-shadow:0 0 28px rgba(143,192,255,.95);word-break:break-word}
+.card,.note{will-change:transform,opacity}
+.card h2.script{font-size:clamp(1.7rem,6.4vw,2.6rem);margin-bottom:6px}
+.card .name{font-family:var(--script);font-size:clamp(2.4rem,9.4vw,4.2rem);color:#fff;line-height:1.1;
+  text-shadow:0 4px 0 #8a3fd1,0 0 26px rgba(255,170,230,.95);word-break:break-word}
 .card p{margin-top:16px;line-height:1.8;color:var(--ice);font-size:clamp(.98rem,2.4vw,1.1rem)}
-.card .sig{font-family:var(--script);font-size:1.9rem;color:#fff;margin-top:14px}
+.card .sig{font-family:var(--script);font-size:1.3rem;color:#fff;margin-top:14px;text-shadow:0 2px 0 #8a3fd1}
 
 .float-heart{position:fixed;bottom:-30px;z-index:3;pointer-events:none;animation:rise var(--d) linear forwards;opacity:0}
 @keyframes rise{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:.85}100%{opacity:0;transform:translateY(-110vh) translateX(var(--x)) scale(1.1)}}
 
 .mute{position:fixed;top:16px;right:16px;z-index:10;width:46px;height:46px;border-radius:50%;cursor:pointer;
-  border:1px solid rgba(188,217,255,.6);background:rgba(255,255,255,.14);color:#fff;font-size:1.2rem;
-  backdrop-filter:blur(6px);display:none}
+  border:1px solid rgba(255,214,243,.6);background:rgba(255,255,255,.14);color:#fff;font-size:1.2rem;
+  display:none}
 .mute.on{display:block}
 
 
 /* ===== Hamburan lily & kembang api ===== */
-.lily-pop{position:absolute;left:0;top:0;animation:scatter var(--t) cubic-bezier(.15,.7,.3,1) forwards;
-  filter:drop-shadow(0 0 10px rgba(143,192,255,.85))}
+.lily-pop{position:absolute;left:0;top:0;will-change:transform,opacity;contain:layout paint;animation:scatter var(--t) cubic-bezier(.15,.7,.3,1) forwards;
+  }
 .lily-pop svg{width:100%;height:100%;display:block}
 @keyframes scatter{
   0%{transform:translate(-50%,-50%) scale(.1) rotate(0deg);opacity:1}
@@ -126,31 +137,31 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy) + 260px)) scale(.9) rotate(calc(var(--r) * 1.6));opacity:0}
 }
 .rain-lily{position:fixed;top:-90px;z-index:3;pointer-events:none;animation:fall var(--d) linear forwards;
-  filter:drop-shadow(0 0 8px rgba(143,192,255,.7))}
+}
 .rain-lily svg{width:100%;height:100%;display:block}
 @keyframes fall{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:.95}
   100%{transform:translate(var(--x),115vh) rotate(var(--r));opacity:.9}}
-#fx{position:fixed;inset:0;z-index:4;pointer-events:none}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
 
-/* ===== Catatan dari Alvin ===== */
+/* ===== Catatan dari someone ===== */
 #s3{justify-content:flex-start;overflow-y:auto}
 #s3 .card{margin-top:auto}
 #s3 .note{margin-bottom:auto}
-.note{position:relative;margin-top:34px;padding:30px 26px 22px;width:min(420px,88vw);color:#1d3f8f;
+.note{position:relative;margin-top:34px;padding:30px 26px 22px;width:min(420px,88vw);color:#6a2a9a;
   font-family:'Caveat','Comic Sans MS',cursive;font-weight:600;
   background:
-    repeating-linear-gradient(transparent 0 31px,rgba(79,141,253,.28) 31px 32px),
-    linear-gradient(#f2f8ff,#dcecff);
-  border-radius:16px 16px 22px 12px;box-shadow:0 14px 34px rgba(3,12,40,.45);
+    repeating-linear-gradient(transparent 0 31px,rgba(190,120,255,.28) 31px 32px),
+    linear-gradient(#fff4fb,#ffe3f4);
+  border-radius:16px 16px 22px 12px;box-shadow:0 14px 34px rgba(30,5,60,.45);
   transform:rotate(-2.5deg) translateY(30px) scale(.9);opacity:0;
   transition:transform .9s cubic-bezier(.2,1.3,.3,1),opacity .7s}
 .note.show{transform:rotate(-2.5deg);opacity:1}
 .note .tape{position:absolute;top:-13px;left:50%;width:96px;height:26px;margin-left:-48px;transform:rotate(3deg);
-  background:rgba(188,217,255,.85);border:1px dashed rgba(255,255,255,.9);box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.note .from{font-size:1.45rem;color:#2f63d8;margin-bottom:6px}
-.note p{margin:0;font-size:clamp(1.45rem,5vw,1.7rem);line-height:32px;color:#1d3f8f;text-align:left}
-.note .who{margin-top:10px;text-align:right;font-size:1.7rem;color:#2f63d8}
-.note .pip{position:absolute;font-size:1.3rem;color:#5a9bff;animation:bob 2.6s ease-in-out infinite}
+  background:rgba(255,214,243,.85);border:1px dashed rgba(255,255,255,.9);box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.note .from{font-size:1.45rem;color:#8a3fd1;margin-bottom:6px}
+.note p{margin:0;font-size:clamp(1.45rem,5vw,1.7rem);line-height:32px;color:#6a2a9a;text-align:left}
+.note .who{margin-top:10px;text-align:right;font-size:1.7rem;color:#8a3fd1}
+.note .pip{position:absolute;font-size:1.3rem;color:#ff7ec7;animation:bob 2.6s ease-in-out infinite}
 .note .pip.a{right:14px;top:-14px}
 .note .pip.b{left:-10px;bottom:30px;animation-delay:-1.2s;font-size:1.1rem}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-6px) rotate(8deg)}}
@@ -158,7 +169,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 /* ===== Navigasi slide & puisi NIA ===== */
 .nav{position:fixed;bottom:20px;z-index:10;width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);
   cursor:pointer;color:#fff;font-size:1.7rem;line-height:1;display:none;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#5a9bff,#2f63d8);box-shadow:0 8px 24px rgba(47,99,216,.6)}
+  background:linear-gradient(135deg,#ff7ec7,#8a3fd1);box-shadow:0 8px 24px rgba(138,63,209,.6)}
 .nav.on{display:flex}
 .nav.next{left:calc(50% - 28px);animation:nudge 1.6s ease-in-out infinite}
 .nav.prev{left:calc(50% - 28px)}
@@ -167,21 +178,86 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 #s3{padding-bottom:215px}
 #s4{justify-content:flex-start;overflow-y:auto;padding-bottom:215px}
 .poem{margin:auto;width:min(560px,92vw);padding:30px 24px;border-radius:28px;text-align:left;
-  background:rgba(255,255,255,.1);border:1px solid rgba(188,217,255,.45);backdrop-filter:blur(10px);
-  box-shadow:0 20px 60px rgba(3,12,40,.5),inset 0 0 40px rgba(143,192,255,.12)}
-.poem h2{text-align:center;font-size:clamp(2.2rem,8vw,3.4rem);margin-bottom:18px}
-.poem .line{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:start;margin:14px 0;
-  opacity:0;transform:translateY(18px);transition:opacity 1s,transform 1s}
+  background:rgba(70,24,120,.62);border:1px solid rgba(255,214,243,.45);
+  box-shadow:0 20px 60px rgba(30,5,60,.5),inset 0 0 40px rgba(255,170,230,.12)}
+.poem h2{text-align:center;font-size:clamp(1.8rem,6.6vw,2.6rem);margin-bottom:18px}
+.poem .para{margin:16px 0;font-size:clamp(1rem,2.6vw,1.12rem);line-height:1.85;color:var(--ice)}
+.poem .line{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:start;margin:14px 0}
 .poem .line b{font-family:var(--script);font-weight:400;font-size:3.6rem;line-height:.9;color:#fff;
-  text-shadow:0 0 22px rgba(143,192,255,.95);text-align:center}
+  text-shadow:0 0 22px rgba(255,170,230,.95);text-align:center}
+.acro{display:flex;justify-content:center;gap:clamp(28px,9vw,56px);margin:22px 0}
+.poem .acro .line{display:block;margin:0}
+.poem .acro .line b{font-size:clamp(3.6rem,13vw,4.8rem)}
 .poem .line span{font-size:clamp(1rem,2.6vw,1.12rem);line-height:1.75;color:var(--ice);padding-top:4px}
-.poem .end{text-align:center;margin-top:20px;font-family:var(--script);font-size:clamp(1.9rem,6vw,2.5rem);
-  text-shadow:0 0 22px rgba(143,192,255,.9);opacity:0;transition:opacity 1.2s}
-.poem.go .line,.poem.go .end{opacity:1;transform:none}
-.poem.go .line:nth-of-type(1){transition-delay:.3s}
-.poem.go .line:nth-of-type(2){transition-delay:1.6s}
-.poem.go .line:nth-of-type(3){transition-delay:2.9s}
-.poem.go .end{transition-delay:4.3s}
+.poem .end{text-align:center;margin-top:24px;font-family:var(--script);font-size:clamp(1.2rem,4.4vw,1.6rem);line-height:1.45;
+  text-shadow:0 0 22px rgba(255,170,230,.9)}
+.poem .line{display:block;grid-template-columns:none;margin:16px 0;font-size:clamp(1rem,2.6vw,1.12rem);line-height:1.85;color:var(--ice)}
+.poem .cap{font-family:var(--script);font-weight:400;font-size:2.4em;line-height:.6;color:#fff;
+  text-shadow:0 0 18px rgba(255,170,230,.95)}
+.poem .para,.poem .line{font-family:var(--body);font-style:normal;font-weight:600;font-size:clamp(1rem,3vw,1.1rem);line-height:1.75}
+.poem .cap{font-style:normal}
+.poem .line b.cap{font-family:var(--script);font-size:1.9em;line-height:.6;color:#fff;text-shadow:0 2px 0 #8a3fd1;text-align:inherit}
+.card,.poem{border:2.5px solid rgba(255,255,255,.85);box-shadow:0 8px 0 rgba(91,31,160,.75),0 22px 50px rgba(30,5,60,.5);position:relative}
+.card{rotate:-1deg}
+.poem{rotate:.6deg}
+.card::before{content:'🎂';position:absolute;top:-24px;right:-6px;font-size:2.4rem;rotate:14deg}
+.poem::before{content:'🌸';position:absolute;top:-24px;left:-6px;font-size:2.4rem;rotate:-12deg}
+.btn{border:2.5px solid #fff;box-shadow:0 5px 0 #5b1fa0,0 10px 22px rgba(138,63,209,.5);font-weight:800}
+.btn:hover{transform:translateY(-2px) rotate(-2deg);box-shadow:0 7px 0 #5b1fa0,0 12px 26px rgba(138,63,209,.6)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #5b1fa0}
+input{border:2.5px solid #fff;box-shadow:0 5px 0 rgba(91,31,160,.8);font-weight:800}
+.lead{font-weight:600}
+/* hati terbelah dua, slide berikutnya muncul dari tengah */
+.heart-btn.boom{animation:heartboom .3s ease-out forwards;pointer-events:none}
+@keyframes heartboom{0%{transform:scale(1);opacity:1}40%{transform:scale(1.25)}100%{transform:scale(1.7);opacity:0}}
+.heart-btn.split{animation:none;pointer-events:none;filter:none}
+.heart-btn .half{will-change:transform,opacity}
+.heart-btn .half{position:absolute;inset:0;width:100%;height:100%}
+.heart-btn .hl{clip-path:polygon(0 0,52% 0,46% 18%,56% 36%,47% 55%,55% 74%,48% 100%,0 100%);animation:splitL .95s cubic-bezier(.5,0,.8,.4) .25s forwards}
+.heart-btn .hr{clip-path:polygon(52% 0,100% 0,100% 100%,48% 100%,55% 74%,47% 55%,56% 36%,46% 18%);animation:splitR .95s cubic-bezier(.5,0,.8,.4) .25s forwards}
+@keyframes splitL{0%{transform:none}12%{transform:translateX(-5px) rotate(-3deg)}100%{transform:translate(-110px,60px) rotate(-30deg);opacity:0}}
+@keyframes splitR{0%{transform:none}12%{transform:translateX(5px) rotate(3deg)}100%{transform:translate(110px,60px) rotate(30deg);opacity:0}}
+.heart-btn .crack{position:absolute;left:calc(50% - 3px);top:-18%;width:6px;height:136%;border-radius:6px;opacity:0;
+  background:linear-gradient(180deg,transparent,#fff 20%,#fff 80%,transparent);box-shadow:0 0 18px 6px rgba(255,170,230,.95),0 0 40px 14px rgba(190,120,255,.7);
+  animation:crack .7s ease-out .2s forwards}
+@keyframes crack{0%{opacity:0;transform:scaleY(0)}30%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scale(5,1.1)}}
+.screen.emerge{animation:emerge 1.1s cubic-bezier(.2,.9,.25,1) .3s both}
+/* seluruh layar terbelah dua, terbuka dari tengah */
+.panel{position:fixed;top:0;width:50%;height:100%;z-index:3;pointer-events:none;overflow:hidden;
+  will-change:transform;contain:layout paint}
+.panel.l{left:0}.panel.r{right:0}
+.panel{backface-visibility:hidden;transform:translate3d(0,0,0)}
+.pin{position:absolute;top:0;width:100vw;height:100%;
+  background:radial-gradient(ellipse at 50% 0%,rgba(255,170,230,.35),transparent 55%),radial-gradient(ellipse at 50% 110%,rgba(255,181,154,.5),transparent 60%),linear-gradient(180deg,var(--deep),var(--night) 70%,#d6509a)}
+.panel.l .pin{left:0}.panel.r .pin{right:0}
+.pin .plant,.pin .bloom{filter:none;animation:none}
+.pin .sparkles{display:none}
+/* PERBAIKAN: panel memakai contain, jadi elemen fixed di dalamnya ikut lebar panel (50%).
+   Paksa jadi absolute terhadap .pin (lebar 100vw) supaya teks terbelah tepat di tengah. */
+.pin .screen{position:absolute;inset:0;width:100%;height:100%;transition:none;transform:none}
+.pin .plant,.pin .bloom{position:absolute}
+/* hentikan animasi dekorasi yang berat selama transisi */
+body.busy .plant,body.busy .bloom,body.busy .sparkles i,body.busy .heart-btn{animation-play-state:paused}
+.seam{position:fixed;left:calc(50% - 4px);top:0;width:8px;height:100%;z-index:4;pointer-events:none;
+  background:linear-gradient(180deg,transparent,#fff 15%,#fff 85%,transparent);
+  box-shadow:0 0 22px 8px rgba(255,170,230,.95),0 0 60px 24px rgba(190,120,255,.7);
+  animation:seamIn .35s ease-out both;transition:opacity 1s,transform 1s}
+.seam.fade{opacity:0;transform:scaleX(7)}
+@keyframes seamIn{from{transform:scaleY(0)}to{transform:none}}
+@keyframes emerge{
+  from{clip-path:inset(44% 47% 44% 47% round 40px);opacity:0;transform:scale(.7)}
+  to{clip-path:inset(0 0 0 0 round 0);opacity:1;transform:none}}
+.poem .end.fav{font-family:var(--cursive);font-weight:400;font-style:normal;color:#fff;margin:34px 0 14px;
+  font-size:clamp(1.15rem,5vw,1.7rem);line-height:1.8;letter-spacing:0;text-transform:uppercase;
+  text-shadow:0 2px 0 #8a3fd1,0 0 22px rgba(255,170,230,.9)}
+.poem .para.tight{margin-bottom:0}
+.poem .para.tight2{margin-top:2px}
+.poem .end.wish{font-family:var(--cursive);font-weight:400;font-style:italic;color:#fff;margin-top:30px;
+  font-size:clamp(1.5rem,6.2vw,2.1rem);line-height:1.7;letter-spacing:0;text-shadow:0 2px 0 #8a3fd1,0 0 22px rgba(255,170,230,.9)}
+/* kata muncul satu per satu, lembut seperti ditulis pelan-pelan */
+.poem .w{display:inline-block;opacity:0;transform:translateY(10px)}
+.poem.go .w{animation:wordIn 1s cubic-bezier(.22,.8,.3,1) var(--d) forwards}
+@keyframes wordIn{to{opacity:1;transform:none}}
 
 /* ===== Beruang bawa balon hati ===== */
 .bear{position:fixed;bottom:0;z-index:3;width:clamp(110px,20vw,160px);pointer-events:none;
@@ -190,19 +266,25 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 .bear.right{right:6px}
 .bear.right svg{scale:-1 1}
 .bear.on{transform:translateY(0)}
-.bear svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 6px 14px rgba(3,12,40,.45));
-  animation:bearbob 3s ease-in-out infinite}
-.bear .arm{transform-origin:146px 300px;animation:armwave 3.6s ease-in-out infinite}
-.bear .balloons{transform-origin:172px 232px;animation:balloonsway 4.2s ease-in-out infinite}
-.bear .eyes{transform-origin:110px 246px;animation:blink 4.6s infinite}
-@keyframes bearbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes armwave{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
-@keyframes balloonsway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
+.bear svg{display:block;width:100%;height:auto;overflow:visible;will-change:transform;
+  animation:bearbob 2.4s ease-in-out infinite}
+.bear svg{transform-origin:50% 100%}
+.bear .arm{transform-origin:146px 300px;animation:armwave 1.8s ease-in-out infinite}
+.bear .balloons{transform-origin:172px 232px;animation:balloonsway 2.4s ease-in-out infinite}
+.bear .head{transform-origin:110px 290px;animation:headtilt 2.6s ease-in-out infinite}
+.bear .eyes{transform-origin:110px 246px;animation:blink 3.6s infinite}
+.bear.right svg{animation-delay:-1.2s}
+.bear.right .arm{animation-delay:-.9s}
+.bear.right .balloons{animation-delay:-1.3s}
+.bear.right .head{animation-delay:-1.5s}
+@keyframes bearbob{0%,100%{transform:translateY(0) rotate(-2deg) scale(1,1)}
+  25%{transform:translateY(-14px) rotate(2deg) scale(.98,1.03)}
+  50%{transform:translateY(0) rotate(2deg) scale(1.03,.97)}
+  75%{transform:translateY(-8px) rotate(-2deg) scale(1,1)}}
+@keyframes armwave{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg)}}
+@keyframes balloonsway{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+@keyframes headtilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
 </style>
 </head>
 <body>
@@ -211,22 +293,22 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="petalFront" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#f3f9ff"/>
-      <stop offset=".35" stop-color="#9cc8ff"/>
-      <stop offset="1" stop-color="#2f6fe0"/>
+      <stop offset="0" stop-color="#fffafd"/>
+      <stop offset=".35" stop-color="#f3b6ee"/>
+      <stop offset="1" stop-color="#a85de0"/>
     </linearGradient>
     <linearGradient id="petalBack" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#d7e9ff"/>
-      <stop offset=".4" stop-color="#6aa4f5"/>
-      <stop offset="1" stop-color="#1f4fb8"/>
+      <stop offset="0" stop-color="#ffe3f6"/>
+      <stop offset=".4" stop-color="#d58be8"/>
+      <stop offset="1" stop-color="#7a3cc0"/>
     </linearGradient>
     <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#bcd9ff"/>
-      <stop offset="1" stop-color="#2f63d8"/>
+      <stop offset="0" stop-color="#ffd6f3"/>
+      <stop offset="1" stop-color="#8a3fd1"/>
     </linearGradient>
 
     <symbol id="lily" viewBox="-100 -100 200 200">
-      <g fill="url(#petalBack)" stroke="#dff0ff" stroke-width=".8" stroke-opacity=".7">
+      <g fill="url(#petalBack)" stroke="#ffe9f8" stroke-width=".8" stroke-opacity=".7">
         <path transform="rotate(60)"  d="M0 0C-24 -28 -26 -72 0 -96C26 -72 24 -28 0 0Z"/>
         <path transform="rotate(180)" d="M0 0C-24 -28 -26 -72 0 -96C26 -72 24 -28 0 0Z"/>
         <path transform="rotate(300)" d="M0 0C-24 -28 -26 -72 0 -96C26 -72 24 -28 0 0Z"/>
@@ -239,7 +321,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       <g stroke="#ffffff" stroke-opacity=".55" stroke-width="1.2" fill="none" stroke-linecap="round">
         <path d="M0 -8V-70"/><path transform="rotate(120)" d="M0 -8V-70"/><path transform="rotate(240)" d="M0 -8V-70"/>
       </g>
-      <g stroke="#cfe5ff" stroke-width="1.6" stroke-linecap="round">
+      <g stroke="#ffe6f7" stroke-width="1.6" stroke-linecap="round">
         <path d="M0 0L-26 -44"/><path d="M0 0L-8 -54"/><path d="M0 0L10 -52"/>
         <path d="M0 0L28 -40"/><path d="M0 0L38 -18"/><path d="M0 0L-38 -20"/>
       </g>
@@ -247,13 +329,13 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
         <circle cx="-26" cy="-44" r="3.6"/><circle cx="-8" cy="-54" r="3.6"/><circle cx="10" cy="-52" r="3.6"/>
         <circle cx="28" cy="-40" r="3.6"/><circle cx="38" cy="-18" r="3.6"/><circle cx="-38" cy="-20" r="3.6"/>
       </g>
-      <circle r="5" fill="#eaf4ff"/>
+      <circle r="5" fill="#fff0fa"/>
     </symbol>
 
     <symbol id="lilyPlant" viewBox="0 0 200 440">
-      <path d="M100 190C100 290 78 360 92 440" stroke="#2b7fa8" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <path d="M92 360C40 330 22 280 30 250C72 262 92 305 92 360Z" fill="#3b95bf" opacity=".9"/>
-      <path d="M94 330C148 308 170 262 164 236C122 244 98 282 94 330Z" fill="#2b7fa8" opacity=".9"/>
+      <path d="M100 190C100 290 78 360 92 440" stroke="#2f9c8c" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M92 360C40 330 22 280 30 250C72 262 92 305 92 360Z" fill="#58c2ae" opacity=".9"/>
+      <path d="M94 330C148 308 170 262 164 236C122 244 98 282 94 330Z" fill="#2f9c8c" opacity=".9"/>
       <use href="#lily" x="0" y="0" width="200" height="200"/>
     </symbol>
 
@@ -275,69 +357,72 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 
 <!-- Layar 1: masukkan nama -->
 <main class="screen" id="s1">
-  <h1 class="script">Untuk Seseorang yang Istimewa</h1>
-  <p class="lead">Sebelum masuk, siapa namamu?</p>
+  <h1 class="script">Eits, ini buat siapa nih? 👀💗</h1>
+  <p class="lead">Ketik namamu dulu dong, biar nggak salah alamat. 💗</p>
   <div id="nameForm" class="form">
-    <input id="nameInput" type="text" maxlength="24" placeholder="Tulis namamu di sini" aria-label="Nama">
+    <input id="nameInput" type="text" maxlength="24" placeholder="Nama kamu siapa?" aria-label="Nama">
     <div class="err" id="err" role="alert"></div>
-    <button class="btn" type="button" id="goBtn">Lanjut</button>
+    <button class="btn" type="button" id="goBtn">Gas lanjut 🚀</button>
   </div>
 </main>
 
 <!-- Layar 2: tekan hati -->
 <section class="screen hidden" id="s2">
   <h1 class="script" id="hello">Halo</h1>
-  <p class="lead">Ada kejutan kecil untukmu. Tekan hatinya.</p>
+  <p class="lead">Ada kejutan kecil buat kamu. Pencet hatinya, jangan malu-malu 💗</p>
   <button class="heart-btn" id="heartBtn" aria-label="Tekan hati untuk membuka kejutan">
-    <svg viewBox="0 0 32 29" aria-hidden="true"><path d="M16 28C-9 12 4 -4 16 6C28 -4 41 12 16 28Z" fill="url(#heartGrad)" stroke="#e8f2ff" stroke-width=".6"/></svg>
+    <svg viewBox="0 0 32 29" aria-hidden="true"><path d="M16 28C-9 12 4 -4 16 6C28 -4 41 12 16 28Z" fill="url(#heartGrad)" stroke="#fff0fa" stroke-width=".6"/></svg>
   </button>
 </section>
 
 <!-- Layar 3: ucapan -->
 <section class="screen hidden" id="s3">
   <div class="card" id="card">
-    <h2 class="script">Selamat Ulang Tahun</h2>
+    <h2 class="script">Happy Birthday! 🎉💗</h2>
     <div class="name" id="finalName"></div>
-    <p>Semoga hari ini penuh tawa, doa-doa baik terkabul, dan setiap langkahmu dijaga kebahagiaan seindah bunga lily yang mekar. Terima kasih sudah hadir dan membuat dunia sekitarmu lebih hangat.</p>
-    <div class="sig">Dengan sepenuh hati</div>
+    <p>Semoga hari ini full tawa, semua doa baikmu di-ACC semesta, dan tiap langkahmu dijaga bahagia kayak lily yang lagi mekar. Makasih udah hadir dan bikin sekitarmu jadi lebih hangat. Hari ini kamu main character-nya 💗</p>
+    <div class="sig">Dari hati yang paling dalam 🫶💗</div>
   </div>
   <div class="note" id="note">
     <span class="tape"></span>
     <span class="pip a">♥</span><span class="pip b">♥</span>
-    <div class="from">Pesan kecil dari Alvin ✨</div>
-    <p>Semoga hari-hari kamu selalu bahagia dan semoga pas lulus bisa 💙</p>
-    <div class="who">- Alvin 💙</div>
+    <div class="from">Pesan kecil dari someone ✨</div>
+    <p>Semoga hari-hari kamu selalu bahagia dan semoga pas lulus bisa 💗</p>
+    <div class="who">- Someone 💗</div>
   </div>
 </section>
 
-<!-- Layar 4: puisi tentang NIA -->
-<section class="screen hidden" id="s4">
+<!-- Layar 4: doa -->
+<section class="screen hidden out-r" id="s4">
   <div class="poem" id="poem">
-    <h2 class="script">Tentang Nia</h2>
-    <div class="line"><b>N</b><span>Namamu seperti doa yang dibisikkan semesta pelan-pelan, dan hari ini langit ikut mengamini.</span></div>
-    <div class="line"><b>I</b><span>Indahmu bukan karena sempurna, melainkan karena hadirmu membuat sunyi terasa seperti pulang.</span></div>
-    <div class="line"><b>A</b><span>Akhirnya setiap langkah menemukan rumahnya, sebagaimana lily biru yang mekar tepat pada waktunya.</span></div>
-    <div class="end">Selamat bertambah usia, Nia 💙</div>
+    <p class="para">Hari ini, saya langitkan semua doa terbaik saya untuk kamu. 💗</p>
+    <p class="para">Semoga hal hal yang membuat kamu runtuh turut menjadi alasan kamu untuk tumbuh.</p>
+    <p class="para">Smoga dunia senantiasa menjaga kamu dimana pun kamu berada.</p>
+    <p class="para">Semoga hari hari kamu selalu di iringi cinta yg tidak pernah ada batas nya, Dan semoga senyum kedua orang tua kamu yang kamu selalu usahakan itu kini sudah terlaksana 💗</p>
+    <div class="end fav">💗 KAMU ADALAH ORANG FAVORITKU 💗</div>
+    <p class="para">Bukan karena kamu paling sempurna, bukan pula karena kamu selalu ada.</p>
+    <p class="para">Namun karena diantara banyaknya manusia yang kutemui, hanya kau yang berhasil membuat hal-hal sederhana terasa begitu berarti.</p>
+    <p class="para tight">Kehadiranmu biasa saja,</p>
+    <p class="para tight2">tetapi ketidakhadiran mu terasa sekali.</p>
+    <p class="para">Dan mungkin itulah alasan mengapa aku selalu memilihmu menjadi orang favoritku. ✨🤍</p>
+    <div class="end wish">Semoga bahagia selamanya 💗</div>
   </div>
 </section>
 
 <button class="nav prev" id="prev" aria-label="Kembali ke slide sebelumnya">&#8592;</button>
 <button class="nav next" id="next" aria-label="Slide berikutnya">&#8594;</button>
 
-<!-- Beruang lucu bawa balon hati -->
+<!-- Beruang lucu bawa balon hati (beruang kanan disalin dari kiri lewat skrip) -->
 <div class="bear left" id="bear" aria-hidden="true">
   <svg viewBox="0 0 260 380" xmlns="http://www.w3.org/2000/svg">
-    <!-- kaki & badan -->
     <ellipse cx="82" cy="352" rx="17" ry="11" fill="#c98f5f"/>
     <ellipse cx="138" cy="352" rx="17" ry="11" fill="#c98f5f"/>
     <ellipse cx="110" cy="315" rx="48" ry="42" fill="#d9a87a"/>
     <ellipse cx="110" cy="322" rx="29" ry="27" fill="#f6dfc3"/>
-    <!-- lengan kiri -->
     <ellipse cx="66" cy="318" rx="12" ry="22" fill="#c98f5f" transform="rotate(14 66 318)"/>
-    <!-- telinga -->
+    <g class="head">
     <circle cx="74" cy="216" r="16" fill="#d9a87a"/><circle cx="74" cy="216" r="8" fill="#f4a6b8"/>
     <circle cx="146" cy="216" r="16" fill="#d9a87a"/><circle cx="146" cy="216" r="8" fill="#f4a6b8"/>
-    <!-- kepala -->
     <circle cx="110" cy="252" r="45" fill="#d9a87a"/>
     <ellipse cx="82" cy="262" rx="8" ry="5" fill="#ff9db5" opacity=".65"/>
     <ellipse cx="138" cy="262" rx="8" ry="5" fill="#ff9db5" opacity=".65"/>
@@ -348,14 +433,14 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     </g>
     <ellipse cx="110" cy="260" rx="5.5" ry="4" fill="#3b2a24"/>
     <path d="M110 264V268M103 269Q110 277 117 269" stroke="#3b2a24" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- lengan kanan terangkat + balon -->
+    </g>
     <g class="arm">
       <g class="balloons">
-        <g stroke="#e4f1ff" stroke-width="1.4" fill="none" stroke-linecap="round">
+        <g stroke="#fff0fa" stroke-width="1.4" fill="none" stroke-linecap="round">
           <path d="M135 123Q150 180 172 232"/><path d="M192 94Q185 165 172 232"/><path d="M222 128Q200 180 172 232"/>
         </g>
-        <use href="#heart" x="100" y="60" width="70" height="63" style="color:#8fc0ff"/>
-        <use href="#heart" x="150" y="18" width="84" height="76" style="color:#2f63d8"/>
+        <use href="#heart" x="100" y="60" width="70" height="63" style="color:#ffb3e6"/>
+        <use href="#heart" x="150" y="18" width="84" height="76" style="color:#8a3fd1"/>
         <use href="#heart" x="190" y="70" width="64" height="58" style="color:#ffb8d1"/>
         <g fill="#fff" opacity=".55">
           <ellipse cx="116" cy="76" rx="6" ry="3.5" transform="rotate(-35 116 76)"/>
@@ -368,50 +453,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     </g>
   </svg>
 </div>
-
-<div class="bear right" id="bear2" aria-hidden="true">
-  <svg viewBox="0 0 260 380" xmlns="http://www.w3.org/2000/svg">
-    <!-- kaki & badan -->
-    <ellipse cx="82" cy="352" rx="17" ry="11" fill="#c98f5f"/>
-    <ellipse cx="138" cy="352" rx="17" ry="11" fill="#c98f5f"/>
-    <ellipse cx="110" cy="315" rx="48" ry="42" fill="#d9a87a"/>
-    <ellipse cx="110" cy="322" rx="29" ry="27" fill="#f6dfc3"/>
-    <!-- lengan kiri -->
-    <ellipse cx="66" cy="318" rx="12" ry="22" fill="#c98f5f" transform="rotate(14 66 318)"/>
-    <!-- telinga -->
-    <circle cx="74" cy="216" r="16" fill="#d9a87a"/><circle cx="74" cy="216" r="8" fill="#f4a6b8"/>
-    <circle cx="146" cy="216" r="16" fill="#d9a87a"/><circle cx="146" cy="216" r="8" fill="#f4a6b8"/>
-    <!-- kepala -->
-    <circle cx="110" cy="252" r="45" fill="#d9a87a"/>
-    <ellipse cx="82" cy="262" rx="8" ry="5" fill="#ff9db5" opacity=".65"/>
-    <ellipse cx="138" cy="262" rx="8" ry="5" fill="#ff9db5" opacity=".65"/>
-    <ellipse cx="110" cy="266" rx="18" ry="14" fill="#f6dfc3"/>
-    <g class="eyes">
-      <circle cx="93" cy="246" r="5" fill="#3b2a24"/><circle cx="127" cy="246" r="5" fill="#3b2a24"/>
-      <circle cx="94.6" cy="244.2" r="1.7" fill="#fff"/><circle cx="128.6" cy="244.2" r="1.7" fill="#fff"/>
-    </g>
-    <ellipse cx="110" cy="260" rx="5.5" ry="4" fill="#3b2a24"/>
-    <path d="M110 264V268M103 269Q110 277 117 269" stroke="#3b2a24" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- lengan kanan terangkat + balon -->
-    <g class="arm">
-      <g class="balloons">
-        <g stroke="#e4f1ff" stroke-width="1.4" fill="none" stroke-linecap="round">
-          <path d="M135 123Q150 180 172 232"/><path d="M192 94Q185 165 172 232"/><path d="M222 128Q200 180 172 232"/>
-        </g>
-        <use href="#heart" x="100" y="60" width="70" height="63" style="color:#8fc0ff"/>
-        <use href="#heart" x="150" y="18" width="84" height="76" style="color:#2f63d8"/>
-        <use href="#heart" x="190" y="70" width="64" height="58" style="color:#ffb8d1"/>
-        <g fill="#fff" opacity=".55">
-          <ellipse cx="116" cy="76" rx="6" ry="3.5" transform="rotate(-35 116 76)"/>
-          <ellipse cx="172" cy="36" rx="7" ry="4" transform="rotate(-35 172 36)"/>
-          <ellipse cx="205" cy="85" rx="5" ry="3" transform="rotate(-35 205 85)"/>
-        </g>
-      </g>
-      <path d="M146 302L170 240" stroke="#c98f5f" stroke-width="22" stroke-linecap="round"/>
-      <circle cx="172" cy="232" r="12" fill="#d9a87a"/>
-    </g>
-  </svg>
-</div>
+<div class="bear right" id="bear2" aria-hidden="true"></div>
 
 <button class="mute" id="mute" aria-label="Matikan suara">🔊</button>
 <div class="flash" id="flash"></div>
@@ -424,6 +466,15 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   var s1=$('s1'), s2=$('s2'), s3=$('s3'), s4=$('s4');
   var userName='';
 
+  $('bear2').innerHTML=$('bear').innerHTML;
+
+  // muat font sejak awal, biar slide ucapan tidak tersendat menunggu font
+  if(document.fonts&&document.fonts.load){
+    ['400 1em "Bagel Fat One"','600 1em Nunito','800 1em Nunito','600 1em Caveat','400 1em "Playwrite ID"','600 1em "Dancing Script"'].forEach(function(f){
+      document.fonts.load(f,'Happy Birthday Nia ♥').catch(function(){});
+    });
+  }
+
   // Kilau bintang latar
   var sp=$('sparkles');
   for(var i=0;i<28;i++){
@@ -435,16 +486,17 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     sp.appendChild(d);
   }
 
-  function show(el){el.classList.remove('hidden')}
-  function hide(el){el.classList.add('hidden')}
+  function show(el){el.classList.remove('hidden','out-l','out-r')}
+  function hide(el,dir){el.classList.add('hidden');if(dir)el.classList.add(dir)}
 
   // 1) Nama
   function submitName(){
     var v=$('nameInput').value.trim();
-    if(!v){ $('err').textContent='Nama harus diisi dulu ya.'; $('nameInput').focus(); return; }
+    if(!v){ $('err').textContent='Eh, namanya masih kosong nih. Isi dulu dong 😆'; $('nameInput').focus(); return; }
     userName=v;
+    audioCtx(); // siapkan audio lebih awal supaya klik hati tidak tersendat
     $('err').textContent='';
-    $('hello').textContent='Halo, '+userName;
+    $('hello').textContent='Hai, '+userName+'! ✨💗';
     hide(s1);
     setTimeout(function(){show(s2); $('heartBtn').focus();},500);
   }
@@ -452,11 +504,11 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   $('nameInput').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); submitName(); } });
 
   // 2) Hati meledak
-  var COLORS=['#bcd9ff','#8fc0ff','#5a9bff','#2f63d8','#ffffff','#cfe5ff','#ffb8d1'];
+  var COLORS=['#ffd6f3','#ffb3e6','#ff7ec7','#8a3fd1','#ffffff','#ffe6f7','#ffb8d1','#c9a7ff'];
   function explode(x,y){
     var box=$('burst');
     box.style.left=x+'px'; box.style.top=y+'px';
-    var n=56;
+    var n=22;
     for(var i=0;i<n;i++){
       var s=document.createElement('span');
       var ang=Math.random()*Math.PI*2;
@@ -464,7 +516,6 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       s.textContent='♥';
       s.style.color=COLORS[Math.floor(Math.random()*COLORS.length)];
       s.style.fontSize=(14+Math.random()*34)+'px';
-      s.style.textShadow='0 0 12px rgba(143,192,255,.9)';
       s.style.setProperty('--dx',Math.cos(ang)*dist+'px');
       s.style.setProperty('--dy',Math.sin(ang)*dist+'px');
       s.style.setProperty('--r',(Math.random()*120-60)+'deg');
@@ -493,7 +544,6 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
       h.style.left=Math.random()*100+'vw';
       h.style.fontSize=(14+Math.random()*22)+'px';
       h.style.color=COLORS[Math.floor(Math.random()*5)];
-      h.style.textShadow='0 0 10px rgba(143,192,255,.9)';
       h.style.setProperty('--d',(6+Math.random()*5)+'s');
       h.style.setProperty('--x',(Math.random()*80-40)+'px');
       document.body.appendChild(h);
@@ -554,11 +604,13 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   // ===== Kembang api =====
   var cv=document.createElement('canvas'); cv.id='fx'; document.body.appendChild(cv);
   var cx=cv.getContext('2d'), rockets=[], parts=[], fxOn=false, fxTimer=null;
-  var FW=['#bcd9ff','#8fc0ff','#5a9bff','#ffffff','#cfe5ff','#ffb8d1','#fff2b8'];
-  function sizeFx(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
+  var FW=['#ffd6f3','#ffb3e6','#ff7ec7','#ffffff','#ffe6f7','#ffb8d1','#fff2b8','#c9a7ff'];
+  var W=window.innerWidth, H=window.innerHeight, Q=Math.min(1,720/Math.max(W,H));
+  function sizeFx(){ W=window.innerWidth; H=window.innerHeight; Q=Math.min(1,720/Math.max(W,H));
+    cv.width=Math.round(W*Q); cv.height=Math.round(H*Q); cx.setTransform(Q,0,0,Q,0,0); }
   sizeFx(); window.addEventListener('resize',sizeFx);
   function launch(){
-    rockets.push({x:cv.width*(0.12+Math.random()*0.76), y:cv.height, ty:cv.height*(0.12+Math.random()*0.33),
+    rockets.push({x:W*(0.12+Math.random()*0.76), y:H, ty:H*(0.12+Math.random()*0.33),
       vy:-(7+Math.random()*3), c:FW[Math.floor(Math.random()*FW.length)]});
   }
   function burstAt(x,y,c){
@@ -574,7 +626,7 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
   }
   function frame(){
     cx.globalCompositeOperation='destination-out';
-    cx.fillStyle='rgba(0,0,0,0.2)'; cx.fillRect(0,0,cv.width,cv.height);
+    cx.fillStyle='rgba(0,0,0,0.2)'; cx.fillRect(0,0,W,H);
     cx.globalCompositeOperation='lighter';
     rockets=rockets.filter(function(r){
       r.y+=r.vy; r.vy*=0.985;
@@ -590,23 +642,24 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     });
     cx.globalAlpha=1;
     if(fxOn||rockets.length||parts.length) requestAnimationFrame(frame);
-    else cx.clearRect(0,0,cv.width,cv.height);
+    else cx.clearRect(0,0,W,H);
   }
-  function startFireworks(){
-    if(fxOn) return; fxOn=true; requestAnimationFrame(frame);
-    var n=0;
-    launch(); launch();
-    fxTimer=setInterval(function(){
-      launch(); if(n<12) launch(); n++;
-      if(n===18){ clearInterval(fxTimer); fxTimer=setInterval(launch,2200); }
-    },420);
+  // satu ledakan besar tepat di posisi hati, tidak ada kembang api susulan
+  function startFireworks(x,y){
+    boom();
+    var n=90;
+    for(var i=0;i<n;i++){
+      var a=Math.PI*2*i/n+Math.random()*.06, sp=1.5+Math.random()*6.5;
+      parts.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,a:1,c:FW[i%FW.length],r:1.8+Math.random()*2.2});
+    }
+    requestAnimationFrame(frame);
   }
 
   // ===== Hamburan bunga lily =====
   var LILY='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#lily" width="200" height="200"/></svg>';
   function scatterLilies(x,y){
     var box=$('burst');
-    for(var i=0;i<22;i++){
+    for(var i=0;i<6;i++){
       var d=document.createElement('div'); d.className='lily-pop'; d.innerHTML=LILY;
       var a=Math.random()*Math.PI*2, dist=140+Math.random()*Math.min(window.innerWidth,720)*0.5, sz=44+Math.random()*64;
       d.style.width=d.style.height=sz+'px';
@@ -634,15 +687,75 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
 
   // ===== Navigasi slide =====
   var slide=2;  // 1 nama, 2 hati, 3 ucapan, 4 puisi (dipakai sebagai penanda posisi)
+  var STEP=.065,total=0,words=[],built=false,followId=0,stopF=false;
+  function buildPoem(){
+    if(built) return; built=true;
+    var n=0;
+    $('poem').querySelectorAll('.para,.line,.end').forEach(function(blk){
+      var tg=[blk];
+      tg.forEach(function(el){
+        if(el.tagName==='B'){
+          el.classList.add('w'); el.style.setProperty('--d',(n*STEP+.3)+'s'); words.push(el); n+=3; return;
+        }
+        var parts=el.textContent.trim().split(/\s+/);
+        el.textContent='';
+        parts.forEach(function(p,i){
+          var w=document.createElement('span'); w.className='w';
+          if(blk.classList.contains('line')&&i===0) w.innerHTML='<b class="cap">'+p.charAt(0)+'</b>'+p.slice(1); else w.textContent=p;
+          w.style.setProperty('--d',(n*STEP+.3)+'s'); n++;
+          el.appendChild(w); words.push(w);
+          if(i<parts.length-1) el.appendChild(document.createTextNode(' '));
+        });
+      });
+      n+=3; // jeda napas antar paragraf
+    });
+    total=n*STEP+.3;
+  }
+  // layar ikut bergulir pelan mengikuti kata yang sedang muncul
+  function follow(){
+    cancelAnimationFrame(followId); stopF=false;
+    var t0=performance.now();
+    (function tick(now){
+      if(stopF||slide!==4) return;
+      var el=(now-t0)/1000;
+      if(el>total+1.2) return;
+      var i=0;
+      while(i<words.length-1&&parseFloat(words[i+1].style.getPropertyValue('--d'))<=el) i++;
+      var bt=words[i].getBoundingClientRect().bottom, lim=window.innerHeight*.6;
+      if(bt>lim) s4.scrollTop+=(bt-lim)*.06;
+      followId=requestAnimationFrame(tick);
+    })(t0);
+  }
+  ['wheel','touchstart'].forEach(function(ev){ s4.addEventListener(ev,function(){stopF=true},{passive:true}); });
+
+  // geser antar slide pakai Web Animations API (tidak tergantung transisi CSS)
+  var navLock=false, SLIDE_MS=800, SLIDE_EASE='cubic-bezier(.65,0,.25,1)';
+  function slideSwap(outEl,inEl,dir,outCls){
+    // dir=1: slide lama keluar ke kiri, slide baru masuk dari kanan; dir=-1 kebalikannya
+    navLock=true;
+    outEl.style.transition='none'; inEl.style.transition='none';
+    show(inEl);
+    inEl.animate([{transform:'translateX('+(dir*100)+'vw)'},{transform:'translateX(0)'}],
+      {duration:SLIDE_MS,easing:SLIDE_EASE});
+    var oa=outEl.animate([{transform:'translateX(0)'},{transform:'translateX('+(-dir*100)+'vw)'}],
+      {duration:SLIDE_MS,easing:SLIDE_EASE,fill:'forwards'});
+    oa.onfinish=function(){ hide(outEl,outCls); oa.cancel(); navLock=false; };
+  }
+
   function goPoem(){
-    if(slide!==3) return; slide=4;
-    hide(s3); $('next').classList.remove('on');
-    setTimeout(function(){ show(s4); $('prev').classList.add('on'); $('poem').classList.remove('go'); void $('poem').offsetWidth; $('poem').classList.add('go'); },500);
+    if(slide!==3||navLock) return; slide=4;
+    $('next').classList.remove('on');
+    s4.scrollTop=0; $('prev').classList.add('on');
+    buildPoem();
+    slideSwap(s3,s4,1,'out-l');
+    var p=$('poem'); p.classList.remove('go'); void p.offsetWidth; p.classList.add('go');
+    follow();
   }
   function goBack(){
-    if(slide!==4) return; slide=3;
-    hide(s4); $('prev').classList.remove('on');
-    setTimeout(function(){ show(s3); $('next').classList.add('on'); },500);
+    if(slide!==4||navLock) return; slide=3; stopF=true;
+    $('prev').classList.remove('on');
+    slideSwap(s4,s3,-1,'out-r');
+    $('next').classList.add('on');
   }
   $('next').addEventListener('click',goPoem);
   $('prev').addEventListener('click',goBack);
@@ -651,28 +764,28 @@ input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(143,192,255,.35)}
     else if(e.key==='ArrowLeft') goBack();
   });
 
+  // Hati ditekan: hati meledak, lalu langsung pindah ke slide ucapan (tanpa animasi layar terbelah)
   var pressed=false;
   $('heartBtn').addEventListener('click',function(){
     if(pressed) return; pressed=true;
     var r=this.getBoundingClientRect();
     var x=r.left+r.width/2, y=r.top+r.height/2;
-    this.classList.add('pop');
-    explode(x,y);
-    scatterLilies(x,y);
-    startFireworks();
+    this.classList.add('boom');
+    document.body.classList.add('busy');
     chime();
+    explode(x,y); scatterLilies(x,y); startFireworks(x,y);
     muteBtn.classList.add('on');
+    // langsung ganti ke slide berikutnya saat ledakan terjadi
     setTimeout(function(){
       hide(s2);
       $('finalName').textContent=userName;
       show(s3); slide=3;
-      setTimeout(function(){$('card').classList.add('show')},100);
-      setTimeout(function(){$('note').classList.add('show')},1100);
-      setTimeout(function(){document.querySelectorAll('.bear').forEach(function(b){b.classList.add('on')})},1500);
-      setTimeout(function(){ if(slide===3) $('next').classList.add('on'); },2000);
-      floatHearts();
-      rainLilies();
-    },2600);
+      setTimeout(function(){$('card').classList.add('show')},250);
+      setTimeout(function(){$('note').classList.add('show')},1200);
+      setTimeout(function(){document.querySelectorAll('.bear').forEach(function(b){b.classList.add('on')})},1800);
+      setTimeout(function(){ if(slide===3) $('next').classList.add('on'); },2400);
+      setTimeout(function(){ document.body.classList.remove('busy'); floatHearts(); rainLilies(); },1500);
+    },280);
   });
 })();
 </script>
