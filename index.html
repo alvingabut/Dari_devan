@@ -3,165 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk NIA 💙</title>
-    <!-- Mengambil font romantis dari Google Fonts -->
+    <title>Selamat Ulang Tahun, Nia!</title>
+    <!-- Menggunakan Tailwind CSS untuk tata letak dasar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mengimpor Font Romantis dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Pengaturan Dasar & UI Responsif */
-        * { box-sizing: border-box; }
-        body, html { 
-            margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: 'Poppins', sans-serif; 
-            overflow: hidden; /* Mencegah scroll saat animasi meledak */
-            background-color: #040d21; 
-            color: #ffffff; 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0f25 0%, #1e3c72 50%, #2a5298 100%);
+            color: white;
+            overflow-x: hidden;
+            margin: 0;
+            height: 100vh;
         }
 
-        /* Halaman Input Nama & Halaman Utama */
-        #intro-screen, #main-screen {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; transition: opacity 1s ease-in-out;
+        .font-romantic {
+            font-family: 'Great Vibes', cursive;
         }
 
-        /* Latar Belakang Utama (Gradien Biru & Bunga Lily) */
-        #main-screen { 
-            display: none; opacity: 0;
-            background: radial-gradient(circle at center, #112d60, #040d21);
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN4PSIyNTAiIHI9IjEuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC44Ii8+PGNpcmNsZSBjeD0iMzUwIiBjeT0iMTUwIiByPSIxIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjMiLz48L3N2Zz4=') repeat;
+            animation: twinkle 10s linear infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .screen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            z-index: 10;
+        }
+
+        .hidden-screen {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.9);
+        }
+
+        .active-screen {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .heart {
+            color: #4dc0b5; /* Biru tosca romantis */
+            font-size: 100px;
+            cursor: pointer;
+            animation: heartbeat 1.2s infinite;
+            text-shadow: 0 0 30px rgba(77, 192, 181, 0.8);
+            user-select: none;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .particle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #81e6d9;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); /* Bentuk mirip bintang/bunga */
+            pointer-events: none;
+            opacity: 0;
+            z-index: 20;
+        }
+
+        @keyframes explode-particle {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot)); opacity: 0; }
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        .btn-glow {
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(167, 192, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Animasi melayang untuk Bunga Lily */
+        .floating-lily {
+            animation: float 6s ease-in-out infinite;
         }
         
-        /* Hiasan Bunga Lily Biru (Menggunakan gambar placeholder, opacity diredupkan agar teks terbaca) */
-        .lily-decoration {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1574844390547-75c61bf64c23?auto=format&fit=crop&q=80'); 
-            background-size: cover; background-position: center;
-            opacity: 0.25; z-index: 1; pointer-events: none; mix-blend-mode: screen;
+        .floating-lily:nth-child(2) {
+            animation-delay: 2s;
+            animation-duration: 7s;
         }
 
-        /* Konten Teks */
-        .content { z-index: 2; padding: 20px; }
-        h1 { 
-            font-family: 'Great Vibes', cursive; font-size: 4.5rem; 
-            color: #87cefa; text-shadow: 0 0 15px rgba(135, 206, 250, 0.7); 
-            margin-bottom: 10px;
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
-        p { font-size: 1.2rem; font-weight: 300; line-height: 1.6; color: #e0f7fa; }
 
-        /* Form Input Nama */
-        .input-container {
-            background: rgba(17, 45, 96, 0.6); padding: 40px; border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); border: 1px solid rgba(135, 206, 250, 0.3);
-            backdrop-filter: blur(10px); z-index: 2;
-        }
-        .input-container h2 { margin-top: 0; color: #87cefa; font-weight: 400; }
-        input[type="text"] {
-            padding: 15px 20px; border-radius: 30px; border: 2px solid #87cefa;
-            outline: none; background: transparent; color: #fff; font-size: 16px;
-            width: 100%; max-width: 300px; margin-bottom: 20px; text-align: center;
-        }
-        input::placeholder { color: rgba(255, 255, 255, 0.6); }
-        button {
-            padding: 12px 40px; border-radius: 30px; border: none;
-            background: #87cefa; color: #040d21; font-weight: 600; font-size: 16px;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(135, 206, 250, 0.4);
-        }
-        button:hover { background: #fff; transform: scale(1.05); }
-
-        /* Animasi Partikel Hati (Ledakan) */
-        .particle {
-            position: absolute; font-size: 2rem; pointer-events: none; z-index: 10;
-            animation: explode 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        @keyframes explode {
-            0% { transform: scale(0.5) translate(0, 0); opacity: 1; }
-            100% { transform: scale(1.5) translate(var(--tx), var(--ty)); opacity: 0; }
+        #error-msg {
+            transition: opacity 0.3s;
         }
     </style>
 </head>
 <body>
 
-    <!-- Layar Pertama: Input Nama -->
-    <div id="intro-screen">
-        <div class="input-container">
-            <h2>Hai, siapa namamu?</h2>
-            <input type="text" id="guestName" placeholder="Masukkan namamu di sini...">
-            <br>
-            <button onclick="startCelebration()">Masuk</button>
+    <!-- Bintang Latar Belakang -->
+    <div class="stars"></div>
+
+    <!-- Audio Player (Tersembunyi) -->
+    <audio id="bg-music" src="selamat.mp3" preload="auto"></audio>
+
+    <div id="screen-1" class="screen active-screen bg-black/30 backdrop-blur-sm">
+        <div class="bg-white/10 p-8 rounded-2xl shadow-[0_0_40px_rgba(42,82,152,0.6)] border border-blue-300/30 text-center max-w-md w-11/12">
+            <h1 class="font-romantic text-4xl md:text-5xl text-blue-200 mb-6 drop-shadow-lg">Halo, Selamat Datang...</h1>
+            <p class="text-blue-100 mb-6 text-sm md:text-base">Sebelum melanjutkan, bolehkah aku tahu siapa namamu?</p>
+            
+            <input type="text" id="guest-name" placeholder="Masukkan namamu di sini..." 
+                   class="w-full px-4 py-3 rounded-xl bg-blue-900/50 border border-blue-400/50 text-white placeholder-blue-300 focus:border-blue-200 mb-4 text-center">
+            
+            <p id="error-msg" class="text-red-300 text-sm mb-4 opacity-0 h-4">Namamu belum diisi!</p>
+            
+            <button onclick="lanjutKeHati()" class="btn-glow w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-semibold py-3 px-6 rounded-xl shadow-lg">
+                Lanjutkan
+            </button>
         </div>
     </div>
 
-    <!-- Layar Kedua: Ucapan Ulang Tahun & Animasi -->
-    <div id="main-screen">
-        <div class="lily-decoration"></div>
-        <div class="content">
-            <h1>Selamat Ulang Tahun, NIA!</h1>
-            <p id="greetingText"></p>
-            <p>Semoga harimu dipenuhi cinta dan seindah bunga lily biru ini 💙</p>
+    <div id="screen-2" class="screen hidden-screen">
+        <h2 class="font-romantic text-4xl text-blue-200 mb-12 drop-shadow-md text-center px-4" id="greeting-name">
+            Hai, ...
+        </h2>
+        <p class="text-lg text-blue-100 mb-8 animate-pulse text-center">Tolong tekan hati biru ini...</p>
+        
+        <div id="heart-container" class="relative">
+            <!-- Icon Hati -->
+            <div id="the-heart" class="heart" onclick="ledakkanHati()">♥</div>
         </div>
     </div>
 
-    <!-- Audio Backsound -->
-    <!-- Pastikan file selamat.mp3 ada di folder/repository yang sama -->
-    <audio id="bgMusic" src="selamat.mp3" loop></audio>
+    <div id="screen-3" class="screen hidden-screen px-4 overflow-y-auto py-10">
+        
+        <!-- Bunga Lily Kiri -->
+        <div class="absolute top-10 left-4 md:left-20 w-24 h-24 md:w-40 md:h-40 floating-lily opacity-80">
+            <!-- SVG Bunga Lily Biru -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 C60 30, 80 40, 90 50 C80 60, 60 70, 50 90 C40 70, 20 60, 10 50 C20 40, 40 30, 50 10 Z" fill="url(#lily-grad)" filter="drop-shadow(0 0 5px rgba(100,181,246,0.8))"/>
+                <path d="M50 20 C55 35, 70 45, 80 50 C70 55, 55 65, 50 80 C45 65, 30 55, 20 50 C30 45, 45 35, 50 20 Z" fill="#BBDEFB"/>
+                <circle cx="50" cy="50" r="5" fill="#FFF9C4"/>
+                <defs>
+                    <linearGradient id="lily-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#90CAF9" />
+                        <stop offset="100%" stop-color="#1565C0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Bunga Lily Kanan -->
+        <div class="absolute bottom-10 right-4 md:right-20 w-24 h-24 md:w-40 md:h-40 floating-lily opacity-80" style="transform: scaleX(-1);">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 C60 30, 80 40, 90 50 C80 60, 60 70, 50 90 C40 70, 20 60, 10 50 C20 40, 40 30, 50 10 Z" fill="url(#lily-grad2)" filter="drop-shadow(0 0 5px rgba(100,181,246,0.8))"/>
+                <path d="M50 20 C55 35, 70 45, 80 50 C70 55, 55 65, 50 80 C45 65, 30 55, 20 50 C30 45, 45 35, 50 20 Z" fill="#E3F2FD"/>
+                <circle cx="50" cy="50" r="5" fill="#FFF9C4"/>
+                <defs>
+                    <linearGradient id="lily-grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#64B5F6" />
+                        <stop offset="100%" stop-color="#0D47A1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_0_50px_rgba(25,118,210,0.5)] border border-blue-400/20 text-center max-w-2xl w-full z-10 relative">
+            <h1 class="font-romantic text-5xl md:text-7xl text-blue-200 mb-4 drop-shadow-[0_0_15px_rgba(144,202,249,0.8)]">
+                Selamat Ulang Tahun
+            </h1>
+            <h2 class="font-bold text-4xl md:text-5xl text-white mb-8 tracking-wider">
+                <span class="text-blue-300">N</span>IA
+            </h2>
+            
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-8"></div>
+            
+            <p class="text-blue-50 text-lg md:text-xl leading-relaxed mb-6 italic">
+                "Teruntuk <span id="final-name" class="font-bold text-blue-300">Kamu</span>,<br>
+                Di hari spesialmu ini, semoga semesta selalu memelukmu dengan kebahagiaan. 
+                Semoga warna biru di hari ini membawa kedamaian, dan bunga lily ini melambangkan harapan yang selalu mekar untukmu."
+            </p>
+            <p class="text-blue-200 text-md md:text-lg font-semibold mt-4">
+                Semoga panjang umur, sehat selalu, dan semua impianmu tercapai. <br>💙 HBD NIA! 💙
+            </p>
+        </div>
+    </div>
 
     <script>
-        function startCelebration() {
-            const nameInput = document.getElementById('guestName').value.trim();
-            if (!nameInput) {
-                alert('Tolong masukkan namamu dulu ya!');
+        let userName = "";
+
+        function lanjutKeHati() {
+            const input = document.getElementById('guest-name').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (input === "") {
+                errorMsg.style.opacity = "1";
                 return;
             }
-
-            // 1. Sembunyikan layar intro dan tampilkan layar utama
-            document.getElementById('intro-screen').style.display = 'none';
-            const mainScreen = document.getElementById('main-screen');
-            mainScreen.style.display = 'flex';
             
-            // Berikan sedikit delay untuk efek fade-in
-            setTimeout(() => { mainScreen.style.opacity = '1'; }, 50);
+            errorMsg.style.opacity = "0";
+            userName = input;
+            
+            // Set nama di layar selanjutnya
+            document.getElementById('greeting-name').innerText = `Hai, ${userName}...`;
+            document.getElementById('final-name').innerText = userName;
 
-            // 2. Set teks sapaan menggunakan nama yang diinput
-            document.getElementById('greetingText').innerHTML = `Halo <b>${nameInput}</b>, terima kasih sudah hadir di momen spesial ini.`;
-
-            // 3. Putar musik selamat.mp3 (diizinkan browser karena dipicu oleh klik tombol)
-            const music = document.getElementById('bgMusic');
-            music.play().catch(error => console.log("Audio play tertunda:", error));
-
-            // 4. Picu animasi ledakan hati biru
-            createHeartExplosion();
+            // Transisi dari Layar 1 ke Layar 2
+            document.getElementById('screen-1').classList.remove('active-screen');
+            document.getElementById('screen-1').classList.add('hidden-screen');
+            
+            setTimeout(() => {
+                document.getElementById('screen-2').classList.remove('hidden-screen');
+                document.getElementById('screen-2').classList.add('active-screen');
+            }, 500); // Tunggu animasi pudar selesai
         }
 
-        // Fungsi JavaScript untuk efek partikel 2D ledakan hati
-        function createHeartExplosion() {
-            const particlesCount = 60; // Jumlah hati yang meledak
-            const heartTypes = ['💙', '🩵', '✨', '🤍']; // Kombinasi emotikon hati biru & romantis
-            const container = document.getElementById('main-screen');
+        function ledakkanHati() {
+            const heart = document.getElementById('the-heart');
+            const container = document.getElementById('heart-container');
+            const audio = document.getElementById('bg-music');
+            
+            // 1. Putar Musik
+            // Catatan: Memutar audio harus dari aksi klik pengguna (kebijakan browser)
+            audio.play().catch(error => console.log("Audio play failed:", error));
 
-            for (let i = 0; i < particlesCount; i++) {
-                let particle = document.createElement('div');
-                particle.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-                particle.className = 'particle';
+            // 2. Sembunyikan Hati perlahan
+            heart.style.transition = "transform 0.2s, opacity 0.2s";
+            heart.style.transform = "scale(0)";
+            heart.style.opacity = "0";
 
-                // Titik awal ledakan dari tengah layar
-                particle.style.left = '50%';
-                particle.style.top = '50%';
+            // 3. Buat Partikel Ledakan
+            const particleCount = 40;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Hitung arah ledakan melingkar menggunakan trigonometri
+                const angle = (i / particleCount) * 360 * (Math.PI / 180);
+                // Jarak sebar acak antara 100px hingga 250px
+                const distance = 100 + Math.random() * 150; 
+                
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                const rot = Math.random() * 360;
 
-                // Kalkulasi arah ledakan menyebar secara acak ke segala arah
-                const angle = Math.random() * 2 * Math.PI; // Sudut melingkar 360 derajat
-                const distance = Math.random() * 400 + 100; // Jarak lemparan partikel
-
-                const tx = Math.cos(angle) * distance + 'px';
-                const ty = Math.sin(angle) * distance + 'px';
-
-                // Set variabel CSS kustom untuk animasi keyframes
-                particle.style.setProperty('--tx', tx);
-                particle.style.setProperty('--ty', ty);
+                // Set variabel CSS untuk keyframes
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                particle.style.setProperty('--rot', `${rot}deg`);
+                
+                // Durasi acak agar terlihat lebih organik
+                const duration = 0.8 + Math.random() * 0.5;
+                particle.style.animation = `explode-particle ${duration}s ease-out forwards`;
 
                 container.appendChild(particle);
-
-                // Hapus partikel dari HTML setelah animasi selesai (1.5 detik)
-                setTimeout(() => { particle.remove(); }, 1500);
             }
+
+            // 4. Pindah ke Layar 3 (Ucapan Ulang Tahun) setelah ledakan
+            setTimeout(() => {
+                document.getElementById('screen-2').classList.remove('active-screen');
+                document.getElementById('screen-2').classList.add('hidden-screen');
+                
+                setTimeout(() => {
+                    document.getElementById('screen-3').classList.remove('hidden-screen');
+                    document.getElementById('screen-3').classList.add('active-screen');
+                }, 800);
+            }, 1000); // Pindah setelah 1 detik
         }
     </script>
 </body>
